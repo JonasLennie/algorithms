@@ -1,4 +1,10 @@
 # Algorithms
 
-Implementations of some common algorithms, as well as some nice interfaces to wrap them.
-Detailed description of algorithms in not-very-cryptically-named modules.
+Implementations of common Algorithms and Object-Oriented patterns in Java.
+
+## [Patterns](./Algorithms/src/uk/jlennie/patterns/README.md)
+
+
+## [Algorithms](./Algorithms/src/uk/jlennie/algorithms/README.md)
+
+
