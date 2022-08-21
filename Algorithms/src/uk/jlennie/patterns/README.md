@@ -2,9 +2,9 @@
 
 A set of common patterns used in Object-Oriented programming.
 
-1. [Creational Patterns](./creational/README.md)
-2. [Structural Patterns](./strucural/README.md)
-3. [Behavioral Patterns](./behavioral/README.md)
+1. [Creational Patterns](./creational/)
+2. [Structural Patterns](./strucural/)
+3. [Behavioral Patterns](./behavioral/)
 
 ## Creational Patterns
 
