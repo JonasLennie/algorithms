@@ -51,6 +51,20 @@ This pattern is ideal for constructing _composite_ objects.
 
 ## Factory Method
 
+See below for an outline of the FactoryMethod pattern.
+
+![FactoryMethod](FactoryMethod.png)
+
+The pattern involves having an abstract class with some dependency on a 
+`Product` interface. The abstract class then contains a method to instantiate new
+instances of `Product`. Subclasses of `Client` then override this method,
+creating instances of subclasses of `Product`.
+
+This separates implementation and creation of product from the rest of the
+business logic. The main disadvantage is that a new implementation of Product
+requires a new sub-classing of client. Further, if there is more than one such
+method, the situation becomes complex quickly.
+
 ## Prototype
 
 ## Singleton
