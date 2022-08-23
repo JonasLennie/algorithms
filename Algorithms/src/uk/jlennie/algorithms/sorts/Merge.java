@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Merge implements Sort {
-    List<Integer> arrayBeingSorted;
+    protected List<Integer> arrayBeingSorted;
 
     @Override
     public List<Integer> getSortedCopy(List<Integer> arrayToSort) {
@@ -15,7 +15,7 @@ public class Merge implements Sort {
         return arrayBeingSorted;
     }
 
-    private void mergeSort(int loIndex, int hiIndex) {
+    protected void mergeSort(int loIndex, int hiIndex) {
         if (boundsAreLargeEnough(loIndex, hiIndex))
             sortLargeBounds(loIndex, hiIndex);
     }
@@ -24,7 +24,7 @@ public class Merge implements Sort {
         return !(loIndex >= hiIndex);
     }
 
-    private void sortLargeBounds(int loIndex, int hiIndex) {
+    protected void sortLargeBounds(int loIndex, int hiIndex) {
         int mid = getMid(loIndex, hiIndex);
 
         mergeSort(loIndex, mid);
