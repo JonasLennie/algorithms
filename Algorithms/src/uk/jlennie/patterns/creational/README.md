@@ -6,6 +6,8 @@
 4. [Prototype](#prototype)
 5. [Singleton](#singleton)
 
+Note the tests for these patterns typically contain examples of use
+
 ## Abstract Factory
 
 See below for a diagram of how Abstract Factory is structured
