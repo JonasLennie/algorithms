@@ -2,6 +2,8 @@
 
 1. [Binary Addition](#binary-addition)
 2. [TwoElementSum](#twoelementsum)
+3. [Polynomial Evaluator](#polynomial-evaluator)
+4. [Inversion Finder](#inversion-finder)
 
 ## Binary addition
 Interface:
@@ -34,3 +36,33 @@ list sum to the target, then it returns `true`
 > <br /><br />
 > `new TwoElementSum().doTwoElementSum(l, 1);`
 > <br />==> false
+
+## Polynomial Evaluator
+
+Given a list, representing coefficients, and a value, representing x,
+evaluates the polynomial represented by these coefficents and that x-value.
+
+Interface:
+> `double evaluate(List<Integer> coefficents, double x);`
+
+Example:
+
+> `new PolynomialEvaluator.evaluate(new ArrayList<>(Arrays.asList(3, 2, 1)), 4.0);`\
+> ==> f(x) = 3x^2 + 2x + 1\
+> ==> f(4.0) = 57
+
+## Inversion Finder
+
+Given a list of integers, counts the number of pairs of (i, j) such that
+A[i] > A[j] && i < j.
+
+Uses Polymorphism to find inversions in any comparable types.
+
+Interface
+
+> `int countInversions(List<Comprable<T>> l);`
+
+Example:
+
+> `new InversionFinder.find(Arrays.AsList(2, 1, 4, 3)`\
+> ==> 2 (pairs (0, 1) and (2, 3))

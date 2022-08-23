@@ -3,6 +3,8 @@
 1. [The Interface](#the-interface)
 2. [Insertion Sort](#insertion-sort)
 3. [Merge Sort](#merge-sort)
+4. [Hybrid Sort](#hybrid-sort)
+5. [Bubble Sort](#bubble-sort)
 
 ## The Interface
 
@@ -53,3 +55,17 @@ Subclassing the `Insertion` class makes this implementation very small.
 
 Not much to say here, just a bog standard implementation of merge sort.
 (With a slightly ugly merge method).
+
+## Hybrid Sort
+
+This is a combination of Merge Sort and Insertion sort. Since insertion 
+sort has lower constant factors than merge sort, it can often be faster
+use this for shorter lists.
+
+As such, the approach is to use merge sort, until the sublist is of some
+length k or less, and at that point, the remaining sublist is sorted with
+insertion sort.
+
+## Bubble Sort
+
+Bog standard bubble sort, it's O(n^2), and rarely practical.
