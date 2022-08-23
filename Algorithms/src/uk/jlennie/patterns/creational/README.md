@@ -67,4 +67,30 @@ method, the situation becomes complex quickly.
 
 ## Prototype
 
+See below for a typical implementation of the Prototype pattern.
+
+![Prototype](Prototype.png)
+
+The primary advantage of the prototype pattern is if a new implementation
+the prototype is created, no factory or internal code need be changed, it
+can just be implemented, plug and play.
+
+The difficulty arises in copying objects, and ensuring that a copy is deep.
+Further, far more run-time dynamism is introduced, which may be positive or
+negative.
+
 ## Singleton
+
+Below is a diagram of a typical implementation of a singleton.
+
+![Singleton](Singleton.png)
+
+This pattern is used to ensure only a single instance of some product exists
+across an entire program (e.g. database connection), while avoiding polluting
+global scope.
+
+Any instance of the Client class will always return the same reference to the
+product reference.
+
+This can be used to control access to a single instance, to control the interface
+used, or control the maximum number of possible instances.
