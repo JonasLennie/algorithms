@@ -4,6 +4,7 @@ Includes the following packages:
 1. [Misc](#miscmisc)
 2. [Search](#searchsearch)
 3. [Sorts](#sortssorts)
+4. [Divide And Conquer](#divide-and-conquerdivide_and_conquer)
 
 ## [Misc](./misc/)
 
@@ -17,3 +18,8 @@ Some common searching algorithms, as well as some fancy interfaces and structuri
 ## [Sorts](./sorts/)
 
 Common sorts, and some interesting variants on classic algorithms.
+
+
+## [Divide and Conquer](./divide_and_conquer)
+
+Implementations of various problems using a divide and conquer approach
