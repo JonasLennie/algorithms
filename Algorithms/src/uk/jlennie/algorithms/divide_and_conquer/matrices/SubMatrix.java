@@ -2,25 +2,32 @@ package uk.jlennie.algorithms.divide_and_conquer.matrices;
 
 public class SubMatrix implements Matrix {
     private final Matrix m;
-    private final int startIndex;
-    private final int endIndex;
+    private final int rowStart;
+    private final int rowEnd;
+    private final int columnStart;
 
-    public SubMatrix(Matrix startingMatrix, int startIndex, int endIndex) throws MatrixError {
-        throwIfIndexesNotValid(startingMatrix, startIndex, endIndex);
+    public SubMatrix(Matrix startingMatrix, int rowStart, int rowEnd, int columnStart, int columnEnd) throws MatrixError {
+        throwIfIndexesNotValid(startingMatrix, rowStart, rowEnd, columnStart, columnEnd);
 
         this.m = startingMatrix;
-        this.startIndex = startIndex - 1;
-        this.endIndex = endIndex;
+        this.rowStart = rowStart - 1;
+        this.rowEnd = rowEnd;
+        this.columnStart = columnStart - 1;
     }
 
-    private void throwIfIndexesNotValid(Matrix startingMatrix, int startIndex, int endIndex) throws MatrixError {
-        if (areNotValid(startingMatrix, startIndex, endIndex))
+    private void throwIfIndexesNotValid(Matrix startingMatrix, int rowStart, int rowEnd, int columnStart, int columnEnd) throws MatrixError {
+        if (areInvalidBounds(startingMatrix, rowStart, rowEnd)
+                || areInvalidBounds(startingMatrix, columnStart, columnEnd)
+                || isNotSquareMatrix(rowStart, rowEnd, columnStart, columnEnd))
             throw new MatrixError("Bad bounds for a sub-matrix");
     }
 
-    private boolean areNotValid(Matrix startingMatrix, int startIndex, int endIndex) {
+    private boolean isNotSquareMatrix(int rowStart, int rowEnd, int columnStart, int columnEnd) {
+        return rowEnd - rowStart != columnEnd - columnStart;
+    }
+
+    private boolean areInvalidBounds(Matrix startingMatrix, int startIndex, int endIndex) {
         return startIndex > endIndex
-                || startIndex > startingMatrix.size()
                 || endIndex > startingMatrix.size()
                 || startIndex <= 0;
     }
@@ -29,7 +36,7 @@ public class SubMatrix implements Matrix {
     public int get(int i, int j) throws MatrixError {
         throwIfIorJAreBad(i, j);
 
-        return m.get(i + startIndex, j + startIndex);
+        return m.get(i + rowStart, j + columnStart);
     }
 
     private void throwIfIorJAreBad(int i, int j) throws MatrixError {
@@ -43,11 +50,13 @@ public class SubMatrix implements Matrix {
 
     @Override
     public int set(int i, int j, int val) throws MatrixError {
-        return m.set(i + startIndex, j + startIndex, val);
+        throwIfIorJAreBad(i, j);
+
+        return m.set(i + rowStart, j + columnStart, val);
     }
 
     @Override
     public int size() {
-        return endIndex - startIndex;
+        return rowEnd - rowStart;
     }
 }

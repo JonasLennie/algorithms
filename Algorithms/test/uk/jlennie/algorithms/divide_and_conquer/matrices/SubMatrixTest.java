@@ -9,38 +9,38 @@ class SubMatrixTest extends MatrixTest {
     // If all tests in base case pass SubMatrix can emulate a BasicMatrix
     @Override
     void setSut(int size) throws MatrixError {
-        sut = new SubMatrix(new BasicMatrix(size), 1, size);
+        sut = new SubMatrix(new BasicMatrix(size), 1, size, 1, size);
     }
 
     @Test
     void canTakeSizeOneSlice() {
-        assertDoesNotThrow(() -> new SubMatrix(new BasicMatrix(6), 1, 1));
+        assertDoesNotThrow(() -> new SubMatrix(new BasicMatrix(6), 1, 1, 1, 1));
     }
 
     @Test
     void biggerStartThanEndCausesError() {
-        assertThrows(MatrixError.class, () -> new SubMatrix(new BasicMatrix(6), 4, 3));
+        assertThrows(MatrixError.class, () -> new SubMatrix(new BasicMatrix(6), 4, 3, 4, 3));
     }
 
     @Test
     void startOrEndOutsideRangeThrows() {
-        assertThrows(MatrixError.class, () -> new SubMatrix(new BasicMatrix(6), 7, 7));
+        assertThrows(MatrixError.class, () -> new SubMatrix(new BasicMatrix(6), 7, 7, 7, 7));
 
-        assertThrows(MatrixError.class, () -> new SubMatrix(new BasicMatrix(6), 5, 7));
+        assertThrows(MatrixError.class, () -> new SubMatrix(new BasicMatrix(6), 5, 7, 5, 7));
     }
 
     @Test
     void startOrEndAtRangeAllowed() {
-        assertDoesNotThrow(() -> new SubMatrix(new BasicMatrix(6), 6, 6));
+        assertDoesNotThrow(() -> new SubMatrix(new BasicMatrix(6), 6, 6, 6, 6));
 
-        assertDoesNotThrow(() -> new SubMatrix(new BasicMatrix(6), 5, 6));
+        assertDoesNotThrow(() -> new SubMatrix(new BasicMatrix(6), 5, 6, 5, 6));
     }
 
     @Test
     void setSpecialValueTakeReadingAndEval() throws MatrixError {
         Matrix m = new BasicMatrix(6);
         m.set(3, 3, 15);
-        sut = new SubMatrix(m, 3, 3);
+        sut = new SubMatrix(m, 3, 3, 3, 3);
 
         int result = sut.get(1, 1);
 
@@ -75,7 +75,7 @@ class SubMatrixTest extends MatrixTest {
     }
 
     private void getSizeThreeSubArray() throws MatrixError {
-        sut = new SubMatrix(new BasicMatrix(6), 2, 4);
+        sut = new SubMatrix(new BasicMatrix(6), 2, 4, 2, 4);
     }
 
     @Test
@@ -99,6 +99,31 @@ class SubMatrixTest extends MatrixTest {
         iterateOverAllValues((i, j) -> setWrapper(i, j, i * j), 3);
 
         iterateOverAllValues(this::getAndAssertEqual, 3);
+    }
+
+    @Test
+    void constructWithMoreDetailedConstructor() throws MatrixError {
+        sut = new SubMatrix(new BasicMatrix(8), 2, 4, 1, 3);
+    }
+
+    @Test
+    void onlyAllowConstructOfSquareMatrices(){
+        assertThrows(MatrixError.class, () -> new SubMatrix(new BasicMatrix(8), 1, 3, 3, 6));
+        assertThrows(MatrixError.class, () -> new SubMatrix(new BasicMatrix(8), 1, 2, 4, 6));
+    }
+
+    @Test
+    void getBottomLeftOfTwoByTwo() throws MatrixError {
+        Matrix m = new BasicMatrix(2);
+        m.set(1, 1, 1);
+        m.set(1, 2, 2);
+        m.set(2, 1, 3);
+        m.set(2, 2, 4);
+
+        SubMatrix subMatrix = new SubMatrix(m, 2, 2, 1, 1);
+
+        assertEquals(1, subMatrix.size());
+        assertEquals(subMatrix.get(1, 1), 3);
     }
 
 }
