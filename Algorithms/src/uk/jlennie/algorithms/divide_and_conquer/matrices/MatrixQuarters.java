@@ -1,10 +1,10 @@
 package uk.jlennie.algorithms.divide_and_conquer.matrices;
 
 public class MatrixQuarters {
-    SubMatrix topLeft;
-    SubMatrix topRight;
-    SubMatrix bottomLeft;
-    SubMatrix bottomRight;
+    private SubMatrix topLeft;
+    private SubMatrix topRight;
+    private SubMatrix bottomLeft;
+    private SubMatrix bottomRight;
 
     public MatrixQuarters(Matrix matrixToQuarter) throws MatrixError {
         throwIfSizeIsNotLargePowerOf2(matrixToQuarter);
