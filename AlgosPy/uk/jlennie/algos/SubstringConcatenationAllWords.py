@@ -72,13 +72,3 @@ class Solution:
     def get_next_k_words(self, j: int, ls: [str]) -> [str]:
         words = ls[j: j + len(self.words)]
         return words
-
-
-def main():
-    s = Solution()
-    result = s.findSubstring("aaaaaaaa", ["aa"])
-    print(result)
-
-
-if __name__ == '__main__':
-    main()
