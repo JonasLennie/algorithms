@@ -28,17 +28,11 @@ class Solution:
             return 0
 
     def is_split_in_range(self, lo, hi):
-        for i in range(lo, hi):
-            if self.nums[i] < self.nums[hi]:
-                return False
-            elif self.nums[i] > self.nums[hi]:
-                return True
-
-        return True
+        return self.nums[lo] > self.nums[hi]
 
     def find_split_in_range(self, lo, hi):
         if self.is_split_at_lo(lo, hi):
-            return lo
+            return hi
         else:
             return self.get_split_in_large_range(hi, lo)
 
@@ -59,6 +53,9 @@ class Solution:
         return lo + 1 == hi
 
     def bin_search(self, lo, hi):
+        if lo > hi:
+            return -1
+
         mid = self.get_mid(hi, lo)
         if self.nums[self.idx(mid)] == self.target:
             return self.idx(mid)
@@ -73,7 +70,7 @@ class Solution:
 
 def main():
     sut = Solution()
-    result = sut.search([4,5,6,7,0,1,2], 4)
+    result = sut.search([5, 1, 2, 4], 5)
     print(result)
 
 
